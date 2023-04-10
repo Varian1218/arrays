@@ -1,8 +1,8 @@
 {
   "description": "",
-  "displayName": "Arrays",
+  "displayName": "c-sharp-extensions",
   "keywords": [],
-  "name": "com.little-lion.arrays",
+  "name": "com.little-lion.c-sharp-extensions",
   "unity": "2021.3",
-  "version": "1.0.2"
+  "version": "2.0.0"
 }
