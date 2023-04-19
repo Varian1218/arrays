@@ -22,5 +22,10 @@ namespace CSharpExtensions
             get => _get();
             set => _set(value);
         }
+
+        public static implicit operator int(DelegateIntPtr intPtr)
+        {
+            return intPtr.Value;
+        }
     }
 }
