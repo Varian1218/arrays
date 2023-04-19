@@ -27,5 +27,11 @@ namespace CSharpExtensions
         {
             return intPtr.Value;
         }
+
+        public static DelegateIntPtr operator ++(DelegateIntPtr intPtr)
+        {
+            intPtr.Value++;
+            return intPtr;
+        }
     }
 }
