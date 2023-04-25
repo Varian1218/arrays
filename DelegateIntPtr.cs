@@ -1,6 +1,6 @@
 using System;
 
-namespace CSharpExtensions
+namespace CSharpBoosts
 {
     public class DelegateIntPtr : IIntPtr
     {

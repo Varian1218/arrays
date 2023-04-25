@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace CSharpExtensions
+namespace CSharpBoosts
 {
     public class CSharpScript
     {

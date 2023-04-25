@@ -5,9 +5,9 @@
   },
   "dependencies": {},
   "description": "",
-  "displayName": "C Sharp Extensions",
+  "displayName": "C Sharp Boost",
   "keywords": [],
-  "name": "com.little-lion.c-sharp-extensions",
+  "name": "com.little-lion.c-sharp-boost",
   "unity": "2021.3",
-  "version": "2.9.0"
+  "version": "3.0.0"
 }

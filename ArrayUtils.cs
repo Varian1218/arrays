@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharpExtensions
+namespace CSharpBoosts
 {
     public static class ArrayUtils
     {

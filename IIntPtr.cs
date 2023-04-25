@@ -1,4 +1,4 @@
-namespace CSharpExtensions
+namespace CSharpBoosts
 {
     public interface IIntPtr
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace CSharpExtensions
+namespace CSharpBoosts
 {
     public static class StringUtils
     {
