@@ -28,5 +28,10 @@ namespace CSharpBoosts
             get => _get(_obj);
             set => _set(_obj, value);
         }
+
+        public static implicit operator TValue(DelegateProperty<T, TValue> delegateProperty)
+        {
+            return delegateProperty.Value;
+        }
     }
 }
