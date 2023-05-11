@@ -57,7 +57,8 @@ namespace CSharpBoosts
         }
 
         public static IObjectDatabase<T> SelectDatabase<T>(
-            this IEnumerable<(Type Type, IEnumerable<T> Objects)> objects)
+            this IEnumerable<(IEnumerable<T> Objects, Type Type)> objects
+        )
         {
             return new ObjectDatabase<T>
             {
