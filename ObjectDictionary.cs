@@ -5,7 +5,12 @@ namespace CSharpBoosts
 {
     public class ObjectDictionary<TObject>
     {
-        private Dictionary<string, TObject> _objects;
+        private IDictionary<string, TObject> _objects;
+
+        public IDictionary<string, TObject> Objects
+        {
+            set => _objects = value;
+        }
 
         public void Add(Type type, TObject obj)
         {

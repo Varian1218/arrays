@@ -1,51 +1,53 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Type = System.Type;
 
 namespace CSharpBoosts
 {
-    public class ObjectDatabase : IObjectDatabase
+    public class ObjectDatabase<TObject> : IObjectDatabase<TObject>
     {
-        private Dictionary<string, IEnumerable<object>> _objects;
+        private Dictionary<string, IEnumerable<TObject>> _objects;
 
-        public IEnumerable<(IEnumerable<object> Objects, Type Type)> TypeObjects
-        {
-            set => Objects = value.Select(it => (GetHash(it.Type), it.Objects));
-        }
-
-        public IEnumerable<(string Hash, IEnumerable<object> Objects)> Objects
+        public IEnumerable<(string Hash, IEnumerable<TObject> Objects)> Objects
         {
             set => _objects = value.ToDictionary(it => it.Hash, it => it.Objects);
         }
 
-        public IEnumerable<IEnumerable<(string, IEnumerable<object>)>> ObjectsMany
+        public IEnumerator<KeyValuePair<string, IEnumerable<TObject>>> GetEnumerator()
         {
-            set => Objects = value.SelectMany(it => it);
+            return _objects.GetEnumerator();
         }
 
-        private static string GetHash(Type type)
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            return type.FullName;
+            return GetEnumerator();
         }
 
-        public IEnumerable<object> Query(string hash)
+        public IEnumerable<TObject> Query(string hash)
         {
             return _objects[hash];
         }
 
-        public IEnumerable<object> Query(Type type)
+        public IEnumerable<TObject> Query(Type type)
         {
-            return Query(GetHash(type));
+            return Query(ObjectDatabaseUtility.GetHash(type));
         }
 
-        public IEnumerable<T> Query<T>()
+        public IEnumerable<T> Query<T>() where T : TObject
         {
             return Query(typeof(T)).Select(it => (T)it);
         }
 
-        public IEnumerable<T> Query<T>(string hash)
+        public IEnumerable<T> Query<T>(string hash) where T : TObject
         {
             return Query(hash).Select(it => (T)it);
+        }
+
+        public IEnumerable<(string, IEnumerable<T>)> Where<T>()
+        {
+            return _objects.Where(it => typeof(T).IsAssignableFrom(Type.GetType(it.Key)))
+                .Select(it => (it.Key, (IEnumerable<T>)it.Value));
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace CSharpBoosts
 {
-    public class CSharpScript
+    public abstract class CSharpScript
     {
         public static Type GetType(string script)
         {
