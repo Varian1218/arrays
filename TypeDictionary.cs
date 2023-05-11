@@ -8,7 +8,7 @@ namespace CSharpBoosts
         private readonly Dictionary<Type, Type> _types = new();
         public Type this[Type type] => _types[type];
 
-        public void Add<TKey, TValue>() where TKey : TValue
+        public void Add<TKey, TValue>() where TValue : TKey
         {
             _types.Add(typeof(TKey), typeof(TValue));
         }
