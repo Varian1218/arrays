@@ -10,6 +10,24 @@ namespace CSharpBoosts
         {
             return type.FullName;
         }
+
+        public static IEnumerable<TObject> Query<TObject>(
+            this IObjectDatabase<TObject> database,
+            Type type,
+            TypeDictionary types
+        )
+        {
+            return database.Query(types.GetKeyIfNotExits(type));
+        }
+
+        public static IEnumerable<T> Query<T>(
+            this IObjectDatabase database,
+            Type type,
+            TypeDictionary types
+        )
+        {
+            return database.Query<T>(GetHash(types.GetKeyIfNotExits(type)));
+        }
         
         public static IObjectDatabase<T> SelectDatabase<T>(
             this IEnumerable<KeyValuePair<string, IEnumerable<T>>> objects

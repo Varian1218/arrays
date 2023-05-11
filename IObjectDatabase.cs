@@ -12,6 +12,7 @@ namespace CSharpBoosts
         IEnumerable<TObject> Query(string hash);
         IEnumerable<TObject> Query(Type type);
         IEnumerable<T> Query<T>() where T : TObject;
+        IEnumerable<T> Query<T>(Type type) where T : TObject;
         IEnumerable<T> Query<T>(string hash) where T : TObject;
         IEnumerable<(string, IEnumerable<T>)> Where<T>();
     }

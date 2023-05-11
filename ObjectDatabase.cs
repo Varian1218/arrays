@@ -39,6 +39,11 @@ namespace CSharpBoosts
             return Query(typeof(T)).Select(it => (T)it);
         }
 
+        public IEnumerable<T> Query<T>(Type type) where T : TObject
+        {
+            return Query<T>(ObjectDatabaseUtility.GetHash(type));
+        }
+
         public IEnumerable<T> Query<T>(string hash) where T : TObject
         {
             return Query(hash).Select(it => (T)it);
