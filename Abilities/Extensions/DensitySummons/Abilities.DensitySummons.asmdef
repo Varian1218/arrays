@@ -1,0 +1,22 @@
+{
+    "name": "DensitySummonAbilities",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5cc406299d4e44510bdc34d38c01aef8",
+        "GUID:6035494398c48944bb078b0ab3b6c61b",
+        "GUID:ddce706df85f147ef8d6114e02a13517",
+        "GUID:c859d03e7c3424f489478e8c4ff40891",
+        "GUID:7bacdda8a0099df4ab03014e3273032a",
+        "GUID:b62eeecee1615e349aac47c0d917db5b",
+        "GUID:2a0bc8a019b72014e8984aa6f673648d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

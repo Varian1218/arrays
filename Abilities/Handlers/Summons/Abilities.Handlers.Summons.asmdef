@@ -1,0 +1,16 @@
+{
+    "name": "Abilities.Handlers.Summons",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7bacdda8a0099df4ab03014e3273032a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

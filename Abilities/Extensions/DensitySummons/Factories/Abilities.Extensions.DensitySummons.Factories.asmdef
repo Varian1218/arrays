@@ -1,0 +1,20 @@
+{
+    "name": "Abilities.Extensions.DensitySummons.Factories",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5cc406299d4e44510bdc34d38c01aef8",
+        "GUID:758491f48db3b1446a04286395739477",
+        "GUID:8389692167382a24e840a1e3dc829ab3",
+        "GUID:6035494398c48944bb078b0ab3b6c61b",
+        "GUID:c859d03e7c3424f489478e8c4ff40891"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

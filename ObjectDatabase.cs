@@ -14,6 +14,11 @@ namespace CSharpBoosts
             set => _objects = value.ToDictionary(it => it.Hash, it => it.Objects);
         }
 
+        public IEnumerable<TObject> this[string key]
+        {
+            set => _objects[key] = value;
+        }
+
         public IEnumerator<KeyValuePair<string, IEnumerable<TObject>>> GetEnumerator()
         {
             return _objects.GetEnumerator();

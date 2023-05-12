@@ -1,0 +1,18 @@
+{
+    "name": "Abilities.Factories",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5cc406299d4e44510bdc34d38c01aef8",
+        "GUID:56b30b9a3b53a7d40b51b04e9e367179",
+        "GUID:3dcd351fe583ae44fa6e611ea87b04c2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
