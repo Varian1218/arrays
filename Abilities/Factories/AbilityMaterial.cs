@@ -1,10 +1,9 @@
-using Factories;
-
-namespace Abilities.Factories
-{
-    public struct AbilityMaterial<THandler>
-    {
-        public THandler Handler;
-        public HashValuesData Values;
-    }
-}
+// using CSharpBoosts;
+//
+// namespace Abilities.Factories
+// {
+//     public struct AbilityMaterial<THandler>
+//     {
+//         public HashValues Values;
+//     }
+// }

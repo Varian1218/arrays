@@ -2,7 +2,7 @@
     "name": "Abilities.Handlers.Summons",
     "rootNamespace": "",
     "references": [
-        "GUID:7bacdda8a0099df4ab03014e3273032a"
+        "GUID:b647ffe0851695943993f06a36e2fb78"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

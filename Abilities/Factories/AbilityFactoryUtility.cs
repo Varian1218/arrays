@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using CSharpBoosts;
 using Factories;
 
@@ -9,16 +8,21 @@ namespace Abilities.Factories
 {
     public static class AbilityFactoryUtility
     {
-        public static IEnumerable<string> All => TypeUtils.All
-            .SelectNotNull(it => it.GetCustomAttribute<AbilityFactoryAttribute>()).Select(it => it.Hash);
+        public static IEnumerable<string> Names => Types.Select(it => it.GetHash());
 
-        public static IFactory<AbilityMaterial<THandler>, IAbilityExtension<THandler>> Create<THandler>()
+        public static IEnumerable<Type> Types => TypeUtils.All.Where(it => it.IsClass && !it.IsAbstract)
+            .InterfaceTypeWhere(typeof(IFactory<,>), new[]
+            {
+                typeof(ObjectData),
+                typeof(IAbilityExtension<>)
+            });
+
+        public static IFactory<ObjectData, IAbilityExtension<THandler>> Create<THandler>()
         {
-            return TypeUtils.All.GetHashTypes<AbilityFactoryAttribute>()
-                .Select(it => (it.Hash,
-                    (IFactory<AbilityMaterial<THandler>, IAbilityExtension<THandler>>)Activator
-                        .CreateInstance(it.Type)))
-                .SelectDictionaryFactory(it => it.Values.Hash);
+            return Types.Select(it => (
+                it.GetHash(),
+                (IFactory<ObjectData, IAbilityExtension<THandler>>)Activator.CreateInstance(it)
+            )).ToDictionaryFactory(it => it.Hash);
         }
     }
 }

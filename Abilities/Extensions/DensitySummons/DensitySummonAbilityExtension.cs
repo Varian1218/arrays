@@ -1,7 +1,7 @@
 using Abilities.Handlers;
 using Animators.TaskAnimators;
-using Factories.Transforms;
 using Transforms;
+using Transforms.Objects;
 
 namespace Abilities.Extensions
 {
@@ -38,7 +38,7 @@ namespace Abilities.Extensions
 
             foreach (var position in Handler.SelectPosition(_extensionProperties.SpawnDensity + Handler.Level))
             {
-                Handler.Summon(_extensionProperties.SpawnHash, new TransformHashValuesData
+                Handler.Summon(_extensionProperties.SpawnHash, new TransformObjectData
                 {
                     Transform = new TransformData
                     {

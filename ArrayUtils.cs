@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CSharpBoosts
 {
@@ -56,6 +57,12 @@ namespace CSharpBoosts
         {
             Array.Copy(src, 0, des, 0, index);
             Array.Copy(src, index + 1, des, index, src.Length - index - 1);
+        }
+
+        public static bool SequenceEqual<T1, T2>(T1[] a, T2[] b)
+        {
+            if (a.Length != b.Length) return false;
+            return !a.Where((t, i) => !Equals(t, b[i])).Any();
         }
     }
 }
