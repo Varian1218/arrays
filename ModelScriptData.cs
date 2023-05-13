@@ -1,9 +1,9 @@
 namespace CSharpBoosts
 {
-    public struct ModelScriptObjectData
+    public struct ModelScriptData
     {
+        public string Hash;
         public string Model;
-        public ObjectData Object;
         public string Script;
     }
 }
