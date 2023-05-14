@@ -4,8 +4,8 @@ namespace Animators
 {
     public interface IAnimator
     {
-        event Action<string> Message; 
+        event Action<string> Message;
+        bool Exits(string hash);
         void Play(string hash);
-        void Play(int hashCode);
     }
 }

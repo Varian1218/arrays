@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace CSharpBoosts
 {
@@ -41,6 +42,29 @@ namespace CSharpBoosts
         public static int ToHashCode(this string s)
         {
             return s.Aggregate(0, (current, t) => current * 31 + t);
+        }
+
+        public static string ToPascalCase(this string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return text;
+            }
+
+            var words = text.Split('-', '_', ' ');
+            var sb = new StringBuilder();
+            foreach (var word in words)
+            {
+                if (string.IsNullOrEmpty(word))
+                {
+                    continue;
+                }
+
+                sb.Append(char.ToUpper(word[0]));
+                sb.Append(word[1..].ToLower());
+            }
+
+            return sb.ToString();
         }
     }
 }

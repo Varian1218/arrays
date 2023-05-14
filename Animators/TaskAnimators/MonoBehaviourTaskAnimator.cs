@@ -12,10 +12,7 @@ namespace Animators.TaskAnimators
         {
             _impl = new TaskAnimator
             {
-                Animator = new UnityAnimator
-                {
-                    Impl = this
-                },
+                Animator = this.ToDelegateAnimator(),
                 Capacity = 8
             };
         }

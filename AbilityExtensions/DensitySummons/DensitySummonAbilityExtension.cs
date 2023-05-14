@@ -13,32 +13,24 @@ namespace Abilities.Extensions
     public class DensitySummonAbilityExtension<THandler> : IAbilityExtension<THandler>
         where THandler : ILevelAbilityHandler, ISelectPositionAbilityHandler, ISummonAbilityHandler, ITaskAnimatorObject
     {
-        private DensitySummonAbilityExtensionProperties _extensionProperties;
-
         public IAbility Ability { get; set; } = new Ability();
-        IAbilityExtensionArgument IAbilityExtension.Argument => NoneAbilityExtensionArgument.Instance;
+        public IAbilityExtensionArgument Argument => NoneAbilityExtensionArgument.Instance;
+        public DensitySummonAbilityExtensionData Data { private get; set; }
         public THandler Handler { private get; set; }
 
         public bool Active(IAbilityArguments args)
         {
-            if (Ability.Cooldown.Value > 0f) return false;
+            if (!Ability.Active(Argument, true)) return false;
             Summon();
             return true;
         }
 
         private async void Summon()
         {
-            Ability.Processing = true;
-            Ability.Cooldown.Value = Ability.Cooldown.MaxValue;
-            if (_extensionProperties.AnimationHash?.Length > 0)
+            await Handler.TaskAnimator.WaitMessagePlay(Data.AnimationHash, Data.AnimationMessage);
+            foreach (var position in Handler.SelectPosition(Data.SpawnDensity + Handler.Level))
             {
-                Handler.TaskAnimator.Animator.Play(_extensionProperties.AnimationHash);
-                await Handler.TaskAnimator.WaitMessage(_extensionProperties.AnimationMessage);
-            }
-
-            foreach (var position in Handler.SelectPosition(_extensionProperties.SpawnDensity + Handler.Level))
-            {
-                Handler.Summon(_extensionProperties.SpawnHash, new TransformObjectData
+                Handler.Summon(Data.SpawnHash, new TransformObjectData
                 {
                     Transform = new TransformData
                     {
@@ -46,8 +38,6 @@ namespace Abilities.Extensions
                     }
                 });
             }
-
-            Ability.Processing = true;
         }
     }
 }

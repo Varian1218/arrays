@@ -37,11 +37,6 @@ namespace CSharpBoosts
             return database.Query(GetHash(type));
         }
 
-        public static IDictionary Query(this IDictionaryDatabase database, string hash)
-        {
-            return database.Objects[hash];
-        }
-
         public static DictionaryDatabase ToDictionaryDatabase<T>(
             this IEnumerable<(string Hash, IEnumerable<T> Objects)> source,
             IDictionary<string, Func<T, string>> keySelectors

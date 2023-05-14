@@ -5,11 +5,22 @@ namespace Animators
 {
     public class MonoBehaviourAnimator : Animator, IAnimator
     {
-        public event Action<string> Message;
+        private readonly IAnimator _impl;
 
-        public void OnMessage(string message)
+        public MonoBehaviourAnimator()
         {
-            Message?.Invoke(message);
+            _impl = this.ToDelegateAnimator();
+        }
+
+        public event Action<string> Message
+        {
+            add => _impl.Message += value;
+            remove => _impl.Message -= value;
+        }
+
+        public bool Exits(string hash)
+        {
+            return _impl.Exits(hash);
         }
     }
 }
