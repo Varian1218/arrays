@@ -17,6 +17,11 @@ namespace CSharpBoosts
             return types.Where(it => typeof(T).IsAssignableFrom(it));
         }
 
+        public static IEnumerable<T> CreateAssignableWhere<T>(this IEnumerable<Type> types)
+        {
+            return types.AssignableWhere<T>().Select(type => (T)Activator.CreateInstance(type));
+        }
+
         public static string GetHash(this Type type)
         {
             return type.GetCustomAttribute<HashAttribute>().Hash;
